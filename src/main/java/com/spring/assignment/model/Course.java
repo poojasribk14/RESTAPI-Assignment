@@ -12,7 +12,7 @@ public class Course {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(nullable = true)
+	@Column(nullable = false)
 	private String title;
 	private int fee = 10000;
 	private int credits = 100;
