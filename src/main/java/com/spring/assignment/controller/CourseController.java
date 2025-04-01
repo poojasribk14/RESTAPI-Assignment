@@ -49,42 +49,6 @@ public class CourseController {
 	public List<Course> getAllCourse() {
 		return courseService.getAllCourse();
 	}
-
-	@DeleteMapping("/api/course/delete/{id}")
-	public ResponseEntity<?> deleteById(@PathVariable int id) {
-		try {
-			Course course = courseService.getOneCourse(id);
-			courseService.deleteById(course);
-			messageDto.setBody("Course deleted successfully!!!");
-			messageDto.setStatusCode(200);
-			return ResponseEntity.ok(messageDto);
-		} catch (InvalidIDException e) {
-			messageDto.setBody(e.getMessage());
-			messageDto.setStatusCode(400);
-			return ResponseEntity.status(400).body(messageDto);
-		}
-	}
-
-	@PutMapping("/api/course/update")
-	public ResponseEntity<?> updateCourse(@RequestBody Course newValue, @RequestParam int id) {
-		try {
-			Course course = courseService.getOneCourse(id);
-			if (newValue.getTitle() != null)
-				course.setTitle(newValue.getTitle());
-			if (newValue.getCredits() != 0)
-				course.setCredits(newValue.getCredits());
-			if (newValue.getFee() != 0)
-				course.setFee(newValue.getFee());
-
-			messageDto.setBody("updated successfully!!!");
-			messageDto.setStatusCode(200);
-			return ResponseEntity.ok(messageDto);
-		} catch (InvalidIDException e) {
-
-			messageDto.setBody(e.getMessage());
-			messageDto.setStatusCode(400);
-			return ResponseEntity.status(400).body(messageDto);
-
-		}
-	}
+ 
+	 
 }
